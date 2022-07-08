@@ -30,6 +30,7 @@ import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
 ### get group
 ``` javascript
 import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
+
 (async () => {
   const groupId = '8136923b-8203-4e08-bfe7-50eb3b558e2c';
   const result = QuorumLightNodeSDK.api.Group.get(groupId);
@@ -39,16 +40,16 @@ import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
 ``` javascript
 // result
 {
-  appKey: "group_timeline"
-  chainAPIs: ['http://103.61.39.166:9003']
-  cipherKey: "c0f3a84920c2c5b93ba308a92302789ca991cb2376c11b16d48fefb31666d5d2"
-  consensusType: "poa"
-  encryptionType: "public"
-  groupId: "8136923b-8203-4e08-bfe7-50eb3b558e2c"
-  groupName: "聊天室5"
-  nodeToken: "xxx"
-  ownerPubKey: "Aqa6ngNxgrVhf2kQc4nA-0Wr4tsWiaBrshZJPujT5B9g"
-  signature: "GDLJ+TcXuo95q+CsUFty7pvMIYZRFRQ3VwrparvjKy00wIYSmx5pl4xT4ALb6AVgNei/is5kn1MuXfh9b5wB+QE="
+  appKey: "group_timeline",
+  chainAPIs: ['http://103.61.39.166:9003'],
+  cipherKey: "c0f3a84920c2c5b93ba308a92302789ca991cb2376c11b16d48fefb31666d5d2",
+  consensusType: "poa",
+  encryptionType: "public",
+  groupId: "8136923b-8203-4e08-bfe7-50eb3b558e2c",
+  groupName: "聊天室5",
+  nodeToken: "xxx",
+  ownerPubKey: "Aqa6ngNxgrVhf2kQc4nA-0Wr4tsWiaBrshZJPujT5B9g",
+  signature: "GDLJ+TcXuo95q+CsUFty7pvMIYZRFRQ3VwrparvjKy00wIYSmx5pl4xT4ALb6AVgNei/is5kn1MuXfh9b5wB+QE=",
 }
 ```
 
@@ -65,16 +66,16 @@ import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
 // result
 [
   {
-    appKey: "group_timeline"
-    chainAPIs: ['http://103.61.39.166:9003']
-    cipherKey: "c0f3a84920c2c5b93ba308a92302789ca991cb2376c11b16d48fefb31666d5d2"
-    consensusType: "poa"
-    encryptionType: "public"
-    groupId: "8136923b-8203-4e08-bfe7-50eb3b558e2c"
-    groupName: "聊天室5"
-    nodeToken: "xxx"
-    ownerPubKey: "Aqa6ngNxgrVhf2kQc4nA-0Wr4tsWiaBrshZJPujT5B9g"
-    signature: "GDLJ+TcXuo95q+CsUFty7pvMIYZRFRQ3VwrparvjKy00wIYSmx5pl4xT4ALb6AVgNei/is5kn1MuXfh9b5wB+QE="
+    appKey: "group_timeline",
+    chainAPIs: ['http://103.61.39.166:9003'],
+    cipherKey: "c0f3a84920c2c5b93ba308a92302789ca991cb2376c11b16d48fefb31666d5d2",
+    consensusType: "poa",
+    encryptionType: "public",
+    groupId: "8136923b-8203-4e08-bfe7-50eb3b558e2c",
+    groupName: "聊天室5",
+    nodeToken: "xxx",
+    ownerPubKey: "Aqa6ngNxgrVhf2kQc4nA-0Wr4tsWiaBrshZJPujT5B9g",
+    signature: "GDLJ+TcXuo95q+CsUFty7pvMIYZRFRQ3VwrparvjKy00wIYSmx5pl4xT4ALb6AVgNei/is5kn1MuXfh9b5wB+QE=",
   }
 ]
 ```
@@ -149,13 +150,6 @@ import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
 ```
 
 ### list contents
-| Parameter      | Type |
-| ----------- | ----------- |
-| groupId      | string       |
-| count   | number        |
-| startTrx   | string        |
-| reverse   | boolean        |
-
 ``` javascript
 import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
 
@@ -180,3 +174,9 @@ import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
   Version: "1.0.0"
 }
 ```
+| Parameter      | Type |
+| ----------- | ----------- |
+| groupId      | string       |
+| count   | number        |
+| startTrx   | string        |
+| reverse   | boolean        |
