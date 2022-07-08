@@ -47,7 +47,6 @@ export const signTrx = async (payload: ISignTrxPayload) => {
   const signature = etherUtils.joinSignature(signatureObj).replace('0x', '');
   const signatureBuffer = typeTransform.hexToUint8Array(signature);
   trx.SenderSign = signatureBuffer;
-  console.log({ object, trx });
   const trxProtoBuffer = await protobuf.create({
     protoFileName: 'https://static-assets.xue.cn/quorum.proto',
     type: 'quorum.Trx',

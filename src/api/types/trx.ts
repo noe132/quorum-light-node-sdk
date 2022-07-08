@@ -1,3 +1,5 @@
+import { IObject } from '../../utils/types/object';
+
 export interface ITrx {
   TrxId: string;
   Type: string;
@@ -11,4 +13,11 @@ export interface ITrx {
   SenderPubkey: string;
   SenderSign: string;
   StorageType: string;
+}
+
+export interface ICreateTrxPayload {
+  groupId: string;
+  object: IObject;
+  privateKey: string;
+  aesKey: string;
 }

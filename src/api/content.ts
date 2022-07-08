@@ -1,5 +1,5 @@
-import { IContent, IEncryptedContent, ICreateContentPayload } from './types';
-import { IObject, AEScrypto, protobuf, signTrx } from '../utils';
+import { IContent, IEncryptedContent } from './types';
+import { IObject, AEScrypto, protobuf } from '../utils';
 import axios, { AxiosResponse } from 'axios';
 import * as Base64 from 'js-base64';
 import { assert, error } from '../utils/assert';
@@ -66,19 +66,3 @@ export const list = async (options: IListOptions) => {
   return contents;
 }
 
-export const create = async (data: ICreateContentPayload) => {
-  const group = Group.get(data.groupId);
-  assert(group, error.notFound('group'));
-  const payload = await signTrx({
-    groupId: data.groupId,
-    object: data.object,
-    privateKey: data.privateKey,
-    aesKey: group!.cipherKey
-  });
-  const res = await (axios.post(`${group!.chainAPIs[0]}/api/v1/node/trx/${data.groupId}`, payload, {
-    headers: {
-      Authorization: `Bearer ${group!.nodeToken}`,
-    }
-  }) as Promise<AxiosResponse<{ trx_id: string }>>);
-  return res.data;
-}

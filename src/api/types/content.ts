@@ -21,10 +21,3 @@ export interface IContent {
   TrxId: string
   Version: string
 }
-
-export interface ICreateContentPayload {
-  groupId: string;
-  object: IObject;
-  privateKey: string;
-  aesKey: string;
-}

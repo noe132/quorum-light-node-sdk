@@ -4,7 +4,7 @@ export * as utils from './utils';
 import * as api from './api';
 import * as utils from './utils';
 
-import * as ethers from 'ethers';
+import { ethers } from 'ethers';
 
 const exportDefault = {
   api,
