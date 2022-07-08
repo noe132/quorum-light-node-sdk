@@ -12,7 +12,6 @@ $ npm install quorum-light-node-sdk
 ``` javascript
 // example
 import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
-import * as ethers from 'ethers';
 
 (async () => {
   const seedUrl = 'rum://seed?xxx';
@@ -56,6 +55,7 @@ import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
 ### list group
 ``` javascript
 import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
+
 (async () => {
   const result = api.Group.list();
   console.log(result);
@@ -99,6 +99,7 @@ import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
 ### create trx
 ``` javascript
 import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
+import { ethers } from 'ethers';
 
 (async () => {
   const wallet = ethers.Wallet.createRandom();
