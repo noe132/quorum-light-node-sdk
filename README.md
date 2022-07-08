@@ -8,20 +8,11 @@ $ yarn install quorum-light-node-sdk
 
 ## Usage
 
-#### add group
-
-```typescript
-// interface
-(seedUrl: string, extra: {
-    nodeToken: string; // provided by full node
-}) => {
-    groupId: string;
-}
-```
-
+### add group
 ``` javascript
 // example
 import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
+import * as ethers from 'ethers';
 
 (async () => {
   const seedUrl = 'rum://seed?xxx';
@@ -37,11 +28,7 @@ import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
 { groupId: '8136923b-8203-4e08-bfe7-50eb3b558e2c' }
 ```
 
-#### get group
-```javascript
-// interface
- (groupId: string) => IGroup | null;
-```
+### get group
 ``` javascript
 (async () => {
   const groupId = '8136923b-8203-4e08-bfe7-50eb3b558e2c';
@@ -65,11 +52,7 @@ import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
 }
 ```
 
-#### list group
-```javascript
-// interface
- () => IGroup[];
-```
+### list group
 ``` javascript
 (async () => {
   const result = api.Group.list();
@@ -94,13 +77,7 @@ import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
 ]
 ```
 
-#### update group
-```javascript
-// interface
-(groupId: string, group: IGroup) => {
-    groupId: string;
-};
-```
+### update group
 ``` javascript
 (async () => {
   const groupId = '8136923b-8203-4e08-bfe7-50eb3b558e2c';
@@ -115,19 +92,11 @@ import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
 { groupId: '8136923b-8203-4e08-bfe7-50eb3b558e2c' }
 ```
 
-#### create trx
-```javascript
-// interface
-const add: (seedUrl: string, extra: {
-    nodeToken: string; // provided by full node
-}) => {
-    groupId: string;
-}
-```
+### create trx
 ``` javascript
 (async () => {
   const wallet = ethers.Wallet.createRandom();
-  const result = await api.Content.create({
+  const result = await api.Trx.create({
     groupId: '8136923b-8203-4e08-bfe7-50eb3b558e2c',
     object: {
       type: 'Note',
@@ -143,11 +112,7 @@ const add: (seedUrl: string, extra: {
 { trx_id: '41f1e91e-5604-4539-8dee-7cf7e3ef5046' }
 ```
 
-#### get trx
-```javascript
-// interface
-(groupId: string, trxId: string) => Promise<ITrx>;
-```
+### get trx
 ``` javascript
 (async () => {
   const groupId = '8136923b-8203-4e08-bfe7-50eb3b558e2c';
@@ -174,16 +139,14 @@ const add: (seedUrl: string, extra: {
 }
 ```
 
-#### list contents
-```javascript
-// interface
-(options: {
-  groupId: string;
-  count?: number;
-  startTrx?: string;
-  reverse?: boolean;
-}) => Promise<IContent[]>
-```
+### list contents
+| Parameter      | Type |
+| ----------- | ----------- |
+| groupId      | string       |
+| count   | number        |
+| startTrx   | string        |
+| reverse   | boolean        |
+
 ``` javascript
 (async () => {
   const result = await api.Content.list({
