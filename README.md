@@ -162,17 +162,19 @@ import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
 ```
 ``` javascript
 // result
-{
-  Data: { type: 'Note', content: 'send from JavaScript SDK' }
-  Expired: 1657279269056000000
-  GroupId: "8136923b-8203-4e08-bfe7-50eb3b558e2c"
-  Nonce: 1
-  SenderPubkey: "Ak0RxoYwYhkAfg0ImkLh-ukRIHkoQ-Kw6QCRr_o83bmq"
-  SenderSign: "Dz436tcTh+NSUjF38oUBjXkIezVfENb/pit9BY1v8jZrjzcwu66YE8OFO9/MzRNIkhgTK2wulfmk51mzJz/9Txs="
-  TimeStamp: "1657279239056000000"
-  TrxId: "41f1e91e-5604-4539-8dee-7cf7e3ef5046"
-  Version: "1.0.0"
-}
+[
+  {
+    Data: { type: 'Note', content: 'send from JavaScript SDK' }
+    Expired: 1657279269056000000
+    GroupId: "8136923b-8203-4e08-bfe7-50eb3b558e2c"
+    Nonce: 1
+    SenderPubkey: "Ak0RxoYwYhkAfg0ImkLh-ukRIHkoQ-Kw6QCRr_o83bmq"
+    SenderSign: "Dz436tcTh+NSUjF38oUBjXkIezVfENb/pit9BY1v8jZrjzcwu66YE8OFO9/MzRNIkhgTK2wulfmk51mzJz/9Txs="
+    TimeStamp: "1657279239056000000"
+    TrxId: "41f1e91e-5604-4539-8dee-7cf7e3ef5046"
+    Version: "1.0.0"
+  }
+]
 ```
 | Parameter      | Type |
 | ----------- | ----------- |
