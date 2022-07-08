@@ -3,7 +3,7 @@ Javascript SDK for Quorum light node.
 
 ## install
 ```
-$ yarn install quorum-light-node-sdk
+$ npm install quorum-light-node-sdk
 ```
 
 ## Usage
@@ -30,6 +30,7 @@ import * as ethers from 'ethers';
 
 ### get group
 ``` javascript
+import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
 (async () => {
   const groupId = '8136923b-8203-4e08-bfe7-50eb3b558e2c';
   const result = api.Group.get(groupId);
@@ -54,6 +55,7 @@ import * as ethers from 'ethers';
 
 ### list group
 ``` javascript
+import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
 (async () => {
   const result = api.Group.list();
   console.log(result);
@@ -79,6 +81,8 @@ import * as ethers from 'ethers';
 
 ### update group
 ``` javascript
+import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
+
 (async () => {
   const groupId = '8136923b-8203-4e08-bfe7-50eb3b558e2c';
   const group = api.Group.get(groupId);
@@ -94,9 +98,11 @@ import * as ethers from 'ethers';
 
 ### create trx
 ``` javascript
+import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
+
 (async () => {
   const wallet = ethers.Wallet.createRandom();
-  const result = await api.Trx.create({
+  const result = await QuorumLightNodeSDK.api.Trx.create({
     groupId: '8136923b-8203-4e08-bfe7-50eb3b558e2c',
     object: {
       type: 'Note',
@@ -114,10 +120,12 @@ import * as ethers from 'ethers';
 
 ### get trx
 ``` javascript
+import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
+
 (async () => {
   const groupId = '8136923b-8203-4e08-bfe7-50eb3b558e2c';
   const trxId = '41f1e91e-5604-4539-8dee-7cf7e3ef5046';
-  const result = await api.Trx.get(groupId, trxId);
+  const result = await QuorumLightNodeSDK.api.Trx.get(groupId, trxId);
   console.log(result);
 })();
 ```
@@ -148,8 +156,10 @@ import * as ethers from 'ethers';
 | reverse   | boolean        |
 
 ``` javascript
+import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
+
 (async () => {
-  const result = await api.Content.list({
+  const result = await QuorumLightNodeSDK.api.Content.list({
     groupId: '8136923b-8203-4e08-bfe7-50eb3b558e2c',
   });
   console.log(result);
