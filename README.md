@@ -32,7 +32,7 @@ import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
 import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
 (async () => {
   const groupId = '8136923b-8203-4e08-bfe7-50eb3b558e2c';
-  const result = api.Group.get(groupId);
+  const result = QuorumLightNodeSDK.api.Group.get(groupId);
   console.log(result);
 })();
 ```
@@ -57,7 +57,7 @@ import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
 import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
 
 (async () => {
-  const result = api.Group.list();
+  const result = QuorumLightNodeSDK.api.Group.list();
   console.log(result);
 })();
 ```
@@ -85,9 +85,9 @@ import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
 
 (async () => {
   const groupId = '8136923b-8203-4e08-bfe7-50eb3b558e2c';
-  const group = api.Group.get(groupId);
+  const group = QuorumLightNodeSDK.api.Group.get(groupId);
   group.groupName = 'new group name';
-  const result = api.Group.update(groupId, group);
+  const result = QuorumLightNodeSDK.api.Group.update(groupId, group);
   console.log(result);
 })();
 ```
