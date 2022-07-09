@@ -3,7 +3,7 @@ import { IObject, AEScrypto, protobuf } from '../utils';
 import axios, { AxiosResponse } from 'axios';
 import * as Base64 from 'js-base64';
 import { assert, error } from '../utils/assert';
-import * as Group from './group';
+import * as cache from '../cache';
 
 interface IListOptions {
   groupId: string;
@@ -16,7 +16,7 @@ const HARD_CODE_JWT_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMj
 
 export const list = async (options: IListOptions) => {
   const { groupId  } = options;
-  const group = Group.get(groupId);
+  const group = cache.Group.get(groupId);
   assert(group, error.notFound('group'));
   const params = {
     group_id: groupId,

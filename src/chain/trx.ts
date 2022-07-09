@@ -1,13 +1,13 @@
 import axios, { AxiosResponse } from 'axios';
 import { ITrx, ICreateTrxPayload } from './types';
 import { assert, error } from '../utils/assert';
-import * as Group from './group';
+import * as cache from '../cache';
 import { signTrx } from '../utils';
 
 export const get = async (groupId: string, trxId: string) => {
   assert(groupId, error.required('groupId'));
   assert(trxId, error.required('trxId'));
-  const group = Group.get(groupId);
+  const group = cache.Group.get(groupId);
   assert(group, error.notFound('group'));
   const res = await (axios.get(`${group!.chainAPIs[0]}/api/v1/trx/${groupId}/${trxId}`, {
     headers: {
@@ -18,7 +18,7 @@ export const get = async (groupId: string, trxId: string) => {
 }
 
 export const create = async (data: ICreateTrxPayload) => {
-  const group = Group.get(data.groupId);
+  const group = cache.Group.get(data.groupId);
   assert(group, error.notFound('group'));
   const payload = await signTrx({
     groupId: data.groupId,

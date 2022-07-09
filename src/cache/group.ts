@@ -3,7 +3,7 @@ import { IGroup } from './types';
 import restoreSeedFromUrl from '../utils/restoreSeedFromUrl';
 import { assert, error } from '../utils/assert';
 
-const STORE_KEY = 'light-node-group-map';
+const STORE_KEY = 'lightNodeGroupMap';
 
 type IMap = Record<string, IGroup>;
 

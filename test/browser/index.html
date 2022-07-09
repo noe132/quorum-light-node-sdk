@@ -17,13 +17,11 @@
         }, n);
       });
 
-    const { api, ethers } = QuorumLightNodeSDK;
-
     // add group
     (async () => {
       try {
         const seedUrl = 'rum://seed?v=1&e=0&n=0&b=Ptpg6HKIRIaTnVw_f3SKvg&c=wPOoSSDCxbk7owipIwJ4nKmRyyN2wRsW1I_vsxZm1dI&g=gTaSO4IDTgi_51DrO1WOLA&k=Aqa6ngNxgrVhf2kQc4nA-0Wr4tsWiaBrshZJPujT5B9g&s=GDLJ-TcXuo95q-CsUFty7pvMIYZRFRQ3VwrparvjKy00wIYSmx5pl4xT4ALb6AVgNei_is5kn1MuXfh9b5wB-QE&t=Fv89llMDYIA&a=%E8%81%8A%E5%A4%A9%E5%AE%A45&y=group_timeline&u=http://103.61.39.166:9003';
-        const result = api.Group.add(seedUrl, {
+        const result = QuorumLightNodeSDK.cache.Group.add(seedUrl, {
           nodeToken: 'xxx'
         });
         console.log(result);
@@ -37,7 +35,7 @@
     (async () => {
       try {
         const groupId = '8136923b-8203-4e08-bfe7-50eb3b558e2c';
-        const result = api.Group.get(groupId);
+        const result = QuorumLightNodeSDK.cache.Group.get(groupId);
         console.log(result);
       } catch (err) {
         console.log(err);
@@ -59,7 +57,7 @@
     // list group
     (async () => {
       try {
-        const result = api.Group.list();
+        const result = QuorumLightNodeSDK.cache.Group.list();
         console.log(result);
       } catch (err) {
         console.log(err);
@@ -84,9 +82,9 @@
     (async () => {
       try {
         const groupId = '8136923b-8203-4e08-bfe7-50eb3b558e2c';
-        const group = api.Group.get(groupId);
+        const group = QuorumLightNodeSDK.cache.Group.get(groupId);
         group.groupName = 'new group name';
-        const result = api.Group.update(groupId, group);
+        const result = QuorumLightNodeSDK.cache.Group.update(groupId, group);
         console.log(result);
       } catch (err) {
         console.log(err);
@@ -98,7 +96,7 @@
     // (async () => {
     //   try {
     //     const groupId = '8136923b-8203-4e08-bfe7-50eb3b558e2c';
-    //     const result = api.Group.remove(groupId);
+    //     const result = QuorumLightNodeSDK.cache.Group.remove(groupId);
     //     console.log(result);
     //   } catch (err) {
     //     console.log(err);
@@ -109,8 +107,8 @@
     // create trx
     (async () => {
       try {
-        const wallet = ethers.Wallet.createRandom();
-        const result = await api.Trx.create({
+        const wallet = QuorumLightNodeSDK.ethers.Wallet.createRandom();
+        const result = await QuorumLightNodeSDK.chain.Trx.create({
           groupId: '8136923b-8203-4e08-bfe7-50eb3b558e2c',
           object: {
             type: 'Note',
@@ -130,7 +128,7 @@
       try {
         const groupId = '8136923b-8203-4e08-bfe7-50eb3b558e2c';
         const trxId = '41f1e91e-5604-4539-8dee-7cf7e3ef5046';
-        const result = await api.Trx.get(groupId, trxId);
+        const result = await QuorumLightNodeSDK.chain.Trx.get(groupId, trxId);
         console.log(result);
       } catch (err) {
         console.log(err);
@@ -154,7 +152,7 @@
     // list contents
     (async () => {
       try {
-        const result = await api.Content.list({
+        const result = await QuorumLightNodeSDK.chain.Content.list({
           groupId: '8136923b-8203-4e08-bfe7-50eb3b558e2c',
         });
         console.log(result);

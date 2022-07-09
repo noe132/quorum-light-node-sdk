@@ -1,13 +1,15 @@
-export * from './api';
-export * as utils from './utils';
+export * from './cache/types';
+export * from './chain/types';
 
-import * as api from './api';
+import * as cache from './cache';
+import * as chain from './chain';
 import * as utils from './utils';
 
 import { ethers } from 'ethers';
 
 const exportDefault = {
-  api,
+  cache,
+  chain,
   utils,
   ethers
 };

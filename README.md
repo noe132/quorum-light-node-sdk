@@ -11,11 +11,11 @@ $ npm install quorum-light-node-sdk
 ### add group
 ``` javascript
 // example
-import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
+import QuorumLightNodeSDK from 'quorum-light-node-sdk';
 
 (async () => {
   const seedUrl = 'rum://seed?xxx';
-  const result = QuorumLightNodeSDK.api.Group.add(seedUrl, {
+  const result = QuorumLightNodeSDK.cache.Group.add(seedUrl, {
     nodeToken: 'xxx'
   });
   console.log(result);
@@ -29,11 +29,11 @@ import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
 
 ### get group
 ``` javascript
-import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
+import QuorumLightNodeSDK from 'quorum-light-node-sdk';
 
 (async () => {
   const groupId = '8136923b-8203-4e08-bfe7-50eb3b558e2c';
-  const result = QuorumLightNodeSDK.api.Group.get(groupId);
+  const result = QuorumLightNodeSDK.cache.Group.get(groupId);
   console.log(result);
 })();
 ```
@@ -55,10 +55,10 @@ import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
 
 ### list groups
 ``` javascript
-import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
+import QuorumLightNodeSDK from 'quorum-light-node-sdk';
 
 (async () => {
-  const result = QuorumLightNodeSDK.api.Group.list();
+  const result = QuorumLightNodeSDK.cache.Group.list();
   console.log(result);
 })();
 ```
@@ -82,13 +82,13 @@ import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
 
 ### update group
 ``` javascript
-import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
+import QuorumLightNodeSDK from 'quorum-light-node-sdk';
 
 (async () => {
   const groupId = '8136923b-8203-4e08-bfe7-50eb3b558e2c';
-  const group = QuorumLightNodeSDK.api.Group.get(groupId);
+  const group = QuorumLightNodeSDK.cache.Group.get(groupId);
   group.groupName = 'new group name';
-  const result = QuorumLightNodeSDK.api.Group.update(groupId, group);
+  const result = QuorumLightNodeSDK.cache.Group.update(groupId, group);
   console.log(result);
 })();
 ```
@@ -98,13 +98,16 @@ import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
 ```
 
 ### create trx
+```
+$ yarn add ethers
+```
 ``` javascript
-import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
+import QuorumLightNodeSDK from 'quorum-light-node-sdk';
 import { ethers } from 'ethers';
 
 (async () => {
   const wallet = ethers.Wallet.createRandom();
-  const result = await QuorumLightNodeSDK.api.Trx.create({
+  const result = await QuorumLightNodeSDK.chain.Trx.create({
     groupId: '8136923b-8203-4e08-bfe7-50eb3b558e2c',
     object: {
       type: 'Note',
@@ -122,12 +125,12 @@ import { ethers } from 'ethers';
 
 ### get trx
 ``` javascript
-import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
+import QuorumLightNodeSDK from 'quorum-light-node-sdk';
 
 (async () => {
   const groupId = '8136923b-8203-4e08-bfe7-50eb3b558e2c';
   const trxId = '41f1e91e-5604-4539-8dee-7cf7e3ef5046';
-  const result = await QuorumLightNodeSDK.api.Trx.get(groupId, trxId);
+  const result = await QuorumLightNodeSDK.chain.Trx.get(groupId, trxId);
   console.log(result);
 })();
 ```
@@ -151,10 +154,10 @@ import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
 
 ### list contents
 ``` javascript
-import * as QuorumLightNodeSDK from 'quorum-light-node-sdk';
+import QuorumLightNodeSDK from 'quorum-light-node-sdk';
 
 (async () => {
-  const result = await QuorumLightNodeSDK.api.Content.list({
+  const result = await QuorumLightNodeSDK.chain.Content.list({
     groupId: '8136923b-8203-4e08-bfe7-50eb3b558e2c',
   });
   console.log(result);
