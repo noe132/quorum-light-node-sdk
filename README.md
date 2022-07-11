@@ -1,5 +1,5 @@
 # quorum-light-node-sdk
-Javascript SDK for Quorum light node.
+Javascript SDK for quorum light node.
 
 ## install
 ```
