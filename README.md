@@ -1,7 +1,7 @@
 # quorum-light-node-sdk
 Javascript SDK for quorum light node.
 
-## install
+## Install
 ```
 $ npm install quorum-light-node-sdk
 ```
