@@ -10,7 +10,6 @@ $ npm install quorum-light-node-sdk
 
 ### add group
 ``` javascript
-// example
 import QuorumLightNodeSDK from 'quorum-light-node-sdk';
 
 (async () => {
@@ -41,7 +40,7 @@ import QuorumLightNodeSDK from 'quorum-light-node-sdk';
 // result
 {
   appKey: "group_timeline",
-  chainAPIs: ['http://103.61.39.166:9003'],
+  chainAPIs: ['http://127.0.0.1:9003'],
   cipherKey: "c0f3a84920c2c5b93ba308a92302789ca991cb2376c11b16d48fefb31666d5d2",
   consensusType: "poa",
   encryptionType: "public",
@@ -67,7 +66,7 @@ import QuorumLightNodeSDK from 'quorum-light-node-sdk';
 [
   {
     appKey: "group_timeline",
-    chainAPIs: ['http://103.61.39.166:9003'],
+    chainAPIs: ['http://127.0.0.1:9003'],
     cipherKey: "c0f3a84920c2c5b93ba308a92302789ca991cb2376c11b16d48fefb31666d5d2",
     consensusType: "poa",
     encryptionType: "public",
