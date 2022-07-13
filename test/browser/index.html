@@ -16,13 +16,12 @@
           resolve();
         }, n);
       });
-
     // add group
     (async () => {
       try {
         const seedUrl = 'rum://seed?v=1&e=0&n=0&b=Ptpg6HKIRIaTnVw_f3SKvg&c=wPOoSSDCxbk7owipIwJ4nKmRyyN2wRsW1I_vsxZm1dI&g=gTaSO4IDTgi_51DrO1WOLA&k=Aqa6ngNxgrVhf2kQc4nA-0Wr4tsWiaBrshZJPujT5B9g&s=GDLJ-TcXuo95q-CsUFty7pvMIYZRFRQ3VwrparvjKy00wIYSmx5pl4xT4ALb6AVgNei_is5kn1MuXfh9b5wB-QE&t=Fv89llMDYIA&a=%E8%81%8A%E5%A4%A9%E5%AE%A45&y=group_timeline&u=http://103.61.39.166:9003';
         const result = QuorumLightNodeSDK.cache.Group.add(seedUrl, {
-          nodeToken: 'xxx'
+          nodeToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGxvd0dyb3VwcyI6W10sImV4cCI6MTY1OTcwNDI2NCwibmFtZSI6Im5vZGUtYWxsLWdyb3VwcyIsInJvbGUiOiJjaGFpbiJ9.mHeMhunwDGmjnB7PhoKqVrUZI7QbfaGxOPgH2o4WUQo'
         });
         console.log(result);
       } catch (err) {
@@ -30,7 +29,6 @@
       }
     })();
     // { groupId: '8136923b-8203-4e08-bfe7-50eb3b558e2c' }
-
     // get group
     (async () => {
       try {
@@ -49,11 +47,10 @@
     //   encryptionType: "public"
     //   groupId: "8136923b-8203-4e08-bfe7-50eb3b558e2c"
     //   groupName: "聊天室5"
-    //   nodeToken: "xxx"
+    //   nodeToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGxvd0dyb3VwcyI6W10sImV4cCI6MTY1OTcwNDI2NCwibmFtZSI6Im5vZGUtYWxsLWdyb3VwcyIsInJvbGUiOiJjaGFpbiJ9.mHeMhunwDGmjnB7PhoKqVrUZI7QbfaGxOPgH2o4WUQo'
     //   ownerPubKey: "Aqa6ngNxgrVhf2kQc4nA-0Wr4tsWiaBrshZJPujT5B9g"
     //   signature: "GDLJ+TcXuo95q+CsUFty7pvMIYZRFRQ3VwrparvjKy00wIYSmx5pl4xT4ALb6AVgNei/is5kn1MuXfh9b5wB+QE="
     // }
-
     // list group
     (async () => {
       try {
@@ -72,12 +69,11 @@
     //     encryptionType: "public"
     //     groupId: "8136923b-8203-4e08-bfe7-50eb3b558e2c"
     //     groupName: "聊天室5"
-    //     nodeToken: "xxx"
+    //     nodeToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGxvd0dyb3VwcyI6W10sImV4cCI6MTY1OTcwNDI2NCwibmFtZSI6Im5vZGUtYWxsLWdyb3VwcyIsInJvbGUiOiJjaGFpbiJ9.mHeMhunwDGmjnB7PhoKqVrUZI7QbfaGxOPgH2o4WUQo'
     //     ownerPubKey: "Aqa6ngNxgrVhf2kQc4nA-0Wr4tsWiaBrshZJPujT5B9g"
     //     signature: "GDLJ+TcXuo95q+CsUFty7pvMIYZRFRQ3VwrparvjKy00wIYSmx5pl4xT4ALb6AVgNei/is5kn1MuXfh9b5wB+QE="
     //   }
     // ]
-
     // update group
     (async () => {
       try {
@@ -91,7 +87,6 @@
       }
     })();
     // { groupId: '8136923b-8203-4e08-bfe7-50eb3b558e2c' }
-
     // remove group
     // (async () => {
     //   try {
@@ -103,7 +98,6 @@
     //   }
     // })();
     // { groupId: '8136923b-8203-4e08-bfe7-50eb3b558e2c' }
-
     // create trx
     (async () => {
       try {
@@ -122,7 +116,6 @@
       }
     })();
     // { trx_id: '41f1e91e-5604-4539-8dee-7cf7e3ef5046' }
-
     // get trx
     (async () => {
       try {
@@ -148,7 +141,6 @@
     //   Type: "POST"
     //   Version: "1.0.0"
     // }
-
     // list contents
     (async () => {
       try {

@@ -1,6 +1,6 @@
 import { ISignTrxPayload } from './types';
 import * as protobuf from './protobuf';
-import * as AEScrypto from './AEScrypto';
+import AEScrypto from './AEScrypto';
 import * as typeTransform from './typeTransform';
 import { v4 as uuidV4 } from 'uuid';
 import sha256 from 'crypto-js/sha256';
@@ -16,8 +16,7 @@ export const signTrx = async (payload: ISignTrxPayload) => {
   assert(object, error.required('object'));
   assert(aesKey, error.required('aesKey'));
   assert(privateKey, error.required('privateKey'));
-  const objectProtoBuffer = await protobuf.create({
-    protoFileName: 'https://static-assets.xue.cn/quorum.proto',
+  const objectProtoBuffer = protobuf.create({
     type: 'quorum._Object',
     payload: object
   })
@@ -35,8 +34,7 @@ export const signTrx = async (payload: ISignTrxPayload) => {
     Nonce: nonce++,
     SenderPubkey: senderPubkey,
   } as any;
-  const trxWithoutSignProtoBuffer = await protobuf.create({
-    protoFileName: 'https://static-assets.xue.cn/quorum.proto',
+  const trxWithoutSignProtoBuffer = protobuf.create({
     type: 'quorum.Trx',
     payload: trx
   });
@@ -47,8 +45,7 @@ export const signTrx = async (payload: ISignTrxPayload) => {
   const signature = etherUtils.joinSignature(signatureObj).replace('0x', '');
   const signatureBuffer = typeTransform.hexToUint8Array(signature);
   trx.SenderSign = signatureBuffer;
-  const trxProtoBuffer = await protobuf.create({
-    protoFileName: 'https://static-assets.xue.cn/quorum.proto',
+  const trxProtoBuffer = protobuf.create({
     type: 'quorum.Trx',
     payload: trx
   });
@@ -70,3 +67,4 @@ export const getSenderPubkey = (privateKey: string) => {
   const senderPubkey = Base64.fromUint8Array(pubKeyBuffer, true);
   return senderPubkey;
 }
+

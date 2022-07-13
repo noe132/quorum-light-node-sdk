@@ -4,16 +4,27 @@ export * from './chain/types';
 import * as cache from './cache';
 import * as chain from './chain';
 import * as utils from './utils';
-
 import { ethers } from 'ethers';
 
-const exportDefault = {
+export default {
   cache,
   chain,
   utils,
   ethers
 };
 
-export default exportDefault;
+export {
+  cache,
+  chain,
+  utils,
+  ethers
+}
 
-(window as any).QuorumLightNodeSDK = exportDefault;
+if (typeof window !== 'undefined') {
+  (window as any).QuorumLightNodeSDK = {
+    cache,
+    chain,
+    utils,
+    ethers
+  };
+}

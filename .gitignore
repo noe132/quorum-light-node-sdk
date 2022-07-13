@@ -6,3 +6,4 @@ test/browser/node_modules
 test/browser/.cache
 test/browser/dist
 test/browser/yarn.lock
+local_storage_data
