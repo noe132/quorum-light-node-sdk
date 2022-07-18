@@ -30,22 +30,22 @@ export const add = (seedUrl: string, extra: {
   const seed = restoreSeedFromUrl(seedUrl);
   assert(extra, error.required('extra'));
   assert(extra.nodeToken, error.required('extra.nodeToken'));
-  assert(seed.Urls.length > 0, error.notFound('chain url'));
-  map[seed.GroupId] = {
-    groupId: seed.GroupId,
-    groupName: seed.GroupName,
-    consensusType: seed.ConsensusType,
-    encryptionType: seed.EncryptionType,
-    cipherKey: seed.CipherKey,
-    appKey: seed.AppKey,
-    ownerPubKey: seed.OwnerPubKey,
-    signature: seed.Signature,
-    chainAPIs: seed.Urls,
+  assert(seed.urls.length > 0, error.notFound('chain url'));
+  map[seed.group_id] = {
+    groupId: seed.group_id,
+    groupName: seed.group_name,
+    consensusType: seed.consensus_type,
+    encryptionType: seed.encryption_type,
+    cipherKey: seed.cipher_key,
+    appKey: seed.app_key,
+    ownerPubKey: seed.owner_pubkey,
+    signature: seed.signature,
+    chainAPIs: seed.urls,
     nodeToken: extra.nodeToken
   };
   store(STORE_KEY, map);
   return {
-    groupId: seed.GroupId
+    groupId: seed.group_id
   };
 }
 

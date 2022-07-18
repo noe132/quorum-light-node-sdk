@@ -10,7 +10,7 @@ export default (url: string) => {
   }
 
   const seed = {
-    GenesisBlock: {
+    genesis_block: {
       BlockId: '',
       GroupId: '',
       PrevBlockId: '',
@@ -20,16 +20,15 @@ export default (url: string) => {
       Trxs: null,
       Signature: ''
     },
-    GroupName: '',
-    ConsensusType: '',
-    EncryptionType: '',
-    CipherKey: '',
-    GroupId: '',
-    OwnerPubKey: '',
-    Signature: '',
-    AppKey: '',
-    Timestamp: 0,
-    Urls: []
+    group_name: '',
+    consensus_type: '',
+    encryption_type: '',
+    cipher_key: '',
+    group_id: '',
+    owner_pubkey: '',
+    signature: '',
+    app_key: '',
+    urls: []
   } as ISeed;
 
   const searchParams = url.split('?')[1];
@@ -40,37 +39,37 @@ export default (url: string) => {
     throw new Error('nonsupport version');
   }
 
-  seed.GroupName = urlParams.get('a') || '';
+  seed.group_name = urlParams.get('a') || '';
 
   const groupId = formatBase64UUID(urlParams.get('g') || '');
-  seed.GenesisBlock.GroupId = groupId;
-  seed.GroupId = groupId;
+  seed.genesis_block.GroupId = groupId;
+  seed.group_id = groupId;
 
   const blockId = formatBase64UUID(urlParams.get('b') || '');
-  seed.GenesisBlock.BlockId = blockId;
+  seed.genesis_block.BlockId = blockId;
 
   const signature = Base64.fromUint8Array(Base64.toUint8Array(urlParams.get('s') || ''));
-  seed.GenesisBlock.Signature = signature;
-  seed.Signature = signature;
+  seed.genesis_block.Signature = signature;
+  seed.signature = signature;
 
-  seed.GenesisBlock.ProducerPubKey = urlParams.get('k') || '';
-  seed.OwnerPubKey = urlParams.get('k') || '';
+  seed.genesis_block.ProducerPubKey = urlParams.get('k') || '';
+  seed.owner_pubkey = urlParams.get('k') || '';
 
   const cipher = uint8ArrayToHex(Base64.toUint8Array(urlParams.get('c') || ''));
-  seed.CipherKey = cipher;
+  seed.cipher_key = cipher;
 
-  seed.AppKey = urlParams.get('y') || '';
+  seed.app_key = urlParams.get('y') || '';
 
-  seed.ConsensusType = urlParams.get('n') === '1' ? 'pos' : 'poa';
+  seed.consensus_type = urlParams.get('n') === '1' ? 'pos' : 'poa';
 
-  seed.EncryptionType = urlParams.get('e') === '0' ? 'public' : 'private';
+  seed.encryption_type = urlParams.get('e') === '0' ? 'public' : 'private';
 
   // const base64Timestamp = Base64.toUint8Array(urlParams.get('t') || '');
-  // seed.GenesisBlock.TimeStamp = base64Timestamp;
+  // seed.genesis_block.TimeStamp = base64Timestamp;
 
   const pUrl = urlParams.get('u') || '';
   for (const url of pUrl.split('|')) {
-    seed.Urls.push(url);
+    seed.urls.push(url);
   }
 
   return seed;

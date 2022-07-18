@@ -1,5 +1,5 @@
 export interface ISeed {
-  GenesisBlock: {
+  genesis_block: {
     BlockId: string;
     GroupId: string;
     PrevBlockId: string;
@@ -9,14 +9,13 @@ export interface ISeed {
     Trxs: null,
     Signature: string;
   },
-  GroupName: string;
-  ConsensusType: string;
-  EncryptionType: string;
-  CipherKey: string;
-  GroupId: string;
-  OwnerPubKey: string;
-  Signature: string;
-  AppKey: string;
-  Timestamp: number,
-  Urls: string[]
+  group_name: string;
+  consensus_type: string;
+  encryption_type: string;
+  cipher_key: string;
+  group_id: string;
+  owner_pubkey: string;
+  signature: string;
+  app_key: string;
+  urls: string[]
 }
