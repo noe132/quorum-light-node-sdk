@@ -1,20 +1,13 @@
-import { IContent, IEncryptedContent } from './types';
+import { IContent, IEncryptedContent, IListContentsOptions } from './types';
 import { IObject, AEScrypto, protobuf } from '../utils';
 import axios, { AxiosResponse } from 'axios';
 import * as Base64 from 'js-base64';
 import { assert, error } from '../utils/assert';
 import * as cache from '../cache';
 
-interface IListOptions {
-  groupId: string;
-  count?: number;
-  startTrx?: string
-  reverse?: boolean
-}
-
 const HARD_CODE_JWT_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
 
-export const list = async (options: IListOptions) => {
+export const list = async (options: IListContentsOptions) => {
   const { groupId  } = options;
   const group = cache.Group.get(groupId);
   assert(group, error.notFound('group'));

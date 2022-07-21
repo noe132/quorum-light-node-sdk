@@ -21,3 +21,10 @@ export interface IContent {
   TrxId: string
   Version: string
 }
+
+export interface IListContentsOptions {
+  groupId: string;
+  count?: number;
+  startTrx?: string
+  reverse?: boolean
+}

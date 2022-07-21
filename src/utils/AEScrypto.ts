@@ -1,6 +1,6 @@
 
-import { hexToUint8Array } from '../typeTransform';
-import { assert, error } from '../assert';
+import { hexToUint8Array } from './typeTransform';
+import { assert, error } from './assert';
 
 export const encrypt = async (buffer: Uint8Array, key: string) => {
   assert(buffer, error.required('buffer'));

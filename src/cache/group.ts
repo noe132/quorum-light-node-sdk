@@ -2,19 +2,12 @@ import { IGroup } from './types';
 import restoreSeedFromUrl from '../utils/restoreSeedFromUrl';
 import { assert, error } from '../utils/assert';
 
-const _localStorage = (typeof localStorage === "undefined" || localStorage === null) ?
-  (() => {
-    const nodeLocalStorage = require('node-localstorage');
-    return new nodeLocalStorage.LocalStorage('./local_storage_data');
-  })() :
-  localStorage;
-
 const store = (key: string, data?: any) => {
   if (!data) {
-    const value = _localStorage.getItem(key);
+    const value = localStorage.getItem(key);
     return value ? JSON.parse(value) : ''
   }
-  _localStorage.setItem(key, JSON.stringify(data));
+  localStorage.setItem(key, JSON.stringify(data));
 }
 
 const STORE_KEY = 'lightNodeGroupMap';

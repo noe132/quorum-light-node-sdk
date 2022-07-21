@@ -1,6 +1,6 @@
 import { ISignTrxPayload } from './types';
 import * as protobuf from './protobuf';
-import AEScrypto from './AEScrypto';
+import * as AEScrypto from './AEScrypto';
 import * as typeTransform from './typeTransform';
 import { v4 as uuidV4 } from 'uuid';
 import sha256 from 'crypto-js/sha256';
