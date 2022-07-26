@@ -9,9 +9,10 @@ export const get = async (groupId: string, trxId: string) => {
   assert(trxId, error.required('trxId'));
   const group = cache.Group.get(groupId);
   assert(group, error.notFound('group'));
-  const res = await (axios.get(`${group!.chainAPIs[0]}/api/v1/trx/${groupId}/${trxId}`, {
+  const apiURL = new URL(group!.chainAPIs[0]);
+  const res = await (axios.get(`${apiURL.origin}/api/v1/trx/${groupId}/${trxId}`, {
     headers: {
-      Authorization: `Bearer ${group!.nodeToken}`
+      Authorization: `Bearer ${apiURL.searchParams.get('jwt') || ''}`
     }
   }) as Promise<AxiosResponse<ITrx>>);
   return res.data;
@@ -26,9 +27,10 @@ export const create = async (data: ICreateTrxPayload) => {
     privateKey: data.privateKey,
     aesKey: group!.cipherKey
   });
-  const res = await (axios.post(`${group!.chainAPIs[0]}/api/v1/node/trx/${data.groupId}`, payload, {
+  const apiURL = new URL(group!.chainAPIs[0]);
+  const res = await (axios.post(`${apiURL.origin}/api/v1/node/trx/${data.groupId}`, payload, {
     headers: {
-      Authorization: `Bearer ${group!.nodeToken}`,
+      Authorization: `Bearer ${apiURL.searchParams.get('jwt') || ''}`,
     }
   }) as Promise<AxiosResponse<{ trx_id: string }>>);
   return res.data;

@@ -31,6 +31,7 @@ export default (url: string) => {
     urls: []
   } as ISeed;
 
+  url = url.replaceAll('?jwt', '_jwt');
   const searchParams = url.split('?')[1];
   const urlParams = new URLSearchParams(searchParams);
 
@@ -69,7 +70,7 @@ export default (url: string) => {
 
   const pUrl = urlParams.get('u') || '';
   for (const url of pUrl.split('|')) {
-    seed.urls.push(url);
+    seed.urls.push(url.replace('_jwt', '?jwt'));
   }
 
   return seed;

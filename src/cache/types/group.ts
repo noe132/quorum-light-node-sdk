@@ -8,7 +8,6 @@ export interface IGroup {
   ownerPubKey: string;
   signature: string;
   chainAPIs: string[];
-  nodeToken: string;
   lastUpdated?: number,
   highestHeight?: number,
   highestBlockId?: string;

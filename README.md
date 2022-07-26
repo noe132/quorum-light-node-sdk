@@ -13,9 +13,7 @@ $ npm install quorum-light-node-sdk
 import QuorumLightNodeSDK from 'quorum-light-node-sdk';
 
 const seedUrl = 'rum://seed?xxx';
-const result = QuorumLightNodeSDK.cache.Group.add(seedUrl, {
-  nodeToken: 'xxx'
-});
+const result = QuorumLightNodeSDK.cache.Group.add(seedUrl);
 console.log(result);
 ```
 
@@ -42,7 +40,6 @@ console.log(result);
   encryptionType: "public",
   groupId: "8136923b-8203-4e08-bfe7-50eb3b558e2c",
   groupName: "chat group",
-  nodeToken: "xxx",
   ownerPubKey: "Aqa6ngNxgrVhf2kQc4nA-0Wr4tsWiaBrshZJPujT5B9g",
   signature: "GDLJ+TcXuo95q+CsUFty7pvMIYZRFRQ3VwrparvjKy00wIYSmx5pl4xT4ALb6AVgNei/is5kn1MuXfh9b5wB+QE=",
 }
@@ -66,7 +63,6 @@ console.log(result);
     encryptionType: "public",
     groupId: "8136923b-8203-4e08-bfe7-50eb3b558e2c",
     groupName: "chat group",
-    nodeToken: "xxx",
     ownerPubKey: "Aqa6ngNxgrVhf2kQc4nA-0Wr4tsWiaBrshZJPujT5B9g",
     signature: "GDLJ+TcXuo95q+CsUFty7pvMIYZRFRQ3VwrparvjKy00wIYSmx5pl4xT4ALb6AVgNei/is5kn1MuXfh9b5wB+QE=",
   }

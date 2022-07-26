@@ -5,8 +5,6 @@ import * as Base64 from 'js-base64';
 import { assert, error } from '../utils/assert';
 import * as cache from '../cache';
 
-const HARD_CODE_JWT_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
-
 export const list = async (options: IListContentsOptions) => {
   const { groupId  } = options;
   const group = cache.Group.get(groupId);
@@ -25,7 +23,6 @@ export const list = async (options: IListContentsOptions) => {
   }
   const getGroupCtnItem = {
     Req: params,
-    JwtToken: HARD_CODE_JWT_TOKEN
   }
   const getGroupCtnItemJsonString = JSON.stringify(getGroupCtnItem);
   const plaintextEncoded = new TextEncoder().encode(getGroupCtnItemJsonString);
@@ -35,9 +32,10 @@ export const list = async (options: IListContentsOptions) => {
     Req: Base64.fromUint8Array(new Uint8Array(encrypted))
   }
 
-  const res = await (axios.post(`${group!.chainAPIs[0]}/api/v1/node/groupctn/${groupId}`, sendJson, {
+  const apiURL = new URL(group!.chainAPIs[0]);
+  const res = await (axios.post(`${apiURL.origin}/api/v1/node/groupctn/${groupId}`, sendJson, {
     headers: {
-      Authorization: `Bearer ${group!.nodeToken}`,
+      Authorization: `Bearer ${apiURL.searchParams.get('jwt') || ''}`,
     }
   }) as Promise<AxiosResponse<IEncryptedContent[]>>);
   

@@ -50,8 +50,7 @@ export const signTrx = async (payload: ISignTrxPayload) => {
     payload: trx
   });
   const trxJsonString = JSON.stringify({
-    TrxBytes: Base64.fromUint8Array(new Uint8Array(trxProtoBuffer)),
-    JwtToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+    TrxBytes: Base64.fromUint8Array(new Uint8Array(trxProtoBuffer))
   });
   const plaintextEncoded = new TextEncoder().encode(trxJsonString);
   const encryptedTrxJsonStringBuffer = await AEScrypto.encrypt(plaintextEncoded, aesKey);

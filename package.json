@@ -1,9 +1,9 @@
 {
   "name": "quorum-light-node-sdk",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "license": "MIT",
   "description": "Quorum light node SDK",
-  "author": "raimonfuns",
+  "author": "rum",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "module": "dist/quorum-light-node-sdk.esm.js",

@@ -16,13 +16,9 @@ export const list = () => {
   return Object.values(store(STORE_KEY) || {}) as IGroup[];
 }
 
-export const add = (seedUrl: string, extra: {
-  nodeToken: string
-}) => {
+export const add = (seedUrl: string) => {
   const map = (store(STORE_KEY) || {}) as IMap;
   const seed = restoreSeedFromUrl(seedUrl);
-  assert(extra, error.required('extra'));
-  assert(extra.nodeToken, error.required('extra.nodeToken'));
   assert(seed.urls.length > 0, error.notFound('chain url'));
   map[seed.group_id] = {
     groupId: seed.group_id,
@@ -33,8 +29,7 @@ export const add = (seedUrl: string, extra: {
     appKey: seed.app_key,
     ownerPubKey: seed.owner_pubkey,
     signature: seed.signature,
-    chainAPIs: seed.urls,
-    nodeToken: extra.nodeToken
+    chainAPIs: seed.urls
   };
   store(STORE_KEY, map);
   return {
