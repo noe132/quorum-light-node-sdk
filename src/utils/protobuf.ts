@@ -42,9 +42,7 @@ export const toObject = ({
     const message = object.decode(pbAnyObject.value);
     const result = object.toObject(message);
     return result
-  } catch (err) {
-    console.log(err)
-  }
+  } catch (_) {}
   return {}
 };
 
