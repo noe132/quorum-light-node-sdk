@@ -44,7 +44,7 @@ export const list = async (options: IListContentsOptions) => {
     const encryptedBuffer = Base64.toUint8Array(data);
     const buffer = await AEScrypto.decrypt(encryptedBuffer, group!.cipherKey);
     const object = protobuf.toObject({
-      type: 'quorum._Object',
+      type: 'quorum.pb._Object',
       buffer
     });
     return {

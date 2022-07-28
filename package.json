@@ -1,6 +1,6 @@
 {
   "name": "quorum-light-node-sdk",
-  "version": "0.1.16",
+  "version": "0.1.18",
   "license": "MIT",
   "description": "Quorum light node SDK",
   "author": "rum",

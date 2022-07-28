@@ -17,7 +17,7 @@ export const signTrx = async (payload: ISignTrxPayload) => {
   assert(aesKey, error.required('aesKey'));
   assert(privateKey, error.required('privateKey'));
   const objectProtoBuffer = protobuf.create({
-    type: 'quorum._Object',
+    type: 'quorum.pb._Object',
     payload: object
   })
   const encrypted = await AEScrypto.encrypt(objectProtoBuffer, aesKey);
@@ -35,7 +35,7 @@ export const signTrx = async (payload: ISignTrxPayload) => {
     SenderPubkey: senderPubkey,
   } as any;
   const trxWithoutSignProtoBuffer = protobuf.create({
-    type: 'quorum.Trx',
+    type: 'quorum.pb.Trx',
     payload: trx
   });
   const trxWithoutSignProtoBase64 = Base64.fromUint8Array(new Uint8Array(trxWithoutSignProtoBuffer));
@@ -46,7 +46,7 @@ export const signTrx = async (payload: ISignTrxPayload) => {
   const signatureBuffer = typeTransform.hexToUint8Array(signature);
   trx.SenderSign = signatureBuffer;
   const trxProtoBuffer = protobuf.create({
-    type: 'quorum.Trx',
+    type: 'quorum.pb.Trx',
     payload: trx
   });
   const trxJsonString = JSON.stringify({
