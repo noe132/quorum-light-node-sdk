@@ -4,5 +4,5 @@ export interface ISignTrxPayload {
   groupId: string;
   object: IObject;
   aesKey: string;
-  privateKey: string;
+  privateKey?: string;
 }

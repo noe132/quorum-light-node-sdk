@@ -18,6 +18,6 @@ export interface ITrx {
 export interface ICreateTrxPayload {
   groupId: string;
   object: IObject;
-  privateKey: string;
   aesKey: string;
+  privateKey?: string;
 }
