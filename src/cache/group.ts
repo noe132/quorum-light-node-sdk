@@ -58,7 +58,12 @@ export const update = (groupId: string, group: IGroup) => {
   assert(group, "group is required");
   const map = (store(STORE_KEY) || {}) as IMap;
   map[groupId] = group;
+  store(STORE_KEY, map)
   return {
     groupId
   };
+}
+
+export const clear = () => {
+  localStorage.removeItem(STORE_KEY);
 }

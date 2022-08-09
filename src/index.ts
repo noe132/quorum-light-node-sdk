@@ -6,6 +6,9 @@ import * as chain from './chain';
 import * as utils from './utils';
 import { ethers } from 'ethers';
 
+import { interceptAxios } from './utils/interceptAxios';
+interceptAxios();
+
 export default {
   cache,
   chain,
@@ -28,3 +31,4 @@ if (typeof window !== 'undefined') {
     ethers
   };
 }
+
