@@ -25,6 +25,7 @@ export const signTrx = async (payload: ISignTrxPayload) => {
   })
   const encrypted = await AEScrypto.encrypt(objectProtoBuffer, aesKey);
   const now = new Date();
+  const senderPubkey = await getSenderPubkey(privateKey);
   const trx = {
     TrxId: uuidV4(),
     GroupId: groupId,
@@ -33,7 +34,7 @@ export const signTrx = async (payload: ISignTrxPayload) => {
     Version: '1.0.0',
     Expired: now.setSeconds(now.getSeconds() + 30) * 1000000,
     Nonce: nonce++,
-    SenderPubkey: getSenderPubkey(privateKey),
+    SenderPubkey: senderPubkey,
   } as any;
   const trxWithoutSignProtoBuffer = protobuf.create({
     type: 'quorum.pb.Trx',
@@ -59,14 +60,14 @@ export const signTrx = async (payload: ISignTrxPayload) => {
   return sendTrxJson;
 }
 
-export const getSenderPubkey = (privateKey?: string) => {
+export const getSenderPubkey = async (privateKey?: string) => {
   if (privateKey) {  
     const signingKey = new etherUtils.SigningKey(privateKey);
     const pubKeyBuffer = typeTransform.hexToUint8Array(signingKey.compressedPublicKey.replace('0x', ''));
     return Base64.fromUint8Array(pubKeyBuffer, true);
   } else {
-    const pubKeyBuffer = typeTransform.hexToUint8Array('0229b0f2b95170217be3daabd0ff0aa7a99a706d9cd55072f945826e77088299b0');
-    return Base64.fromUint8Array(pubKeyBuffer, true);
+    const address = await getProviderAccount();
+    return address;
   }
 }
 
