@@ -1,5 +1,5 @@
-import { IObject } from '../../utils/types/object';
-import { IPerson } from '../../utils/types/person';
+import { IObject } from './object';
+import { IPerson } from './person';
 
 export interface ITrx {
   TrxId: string;

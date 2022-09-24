@@ -1,5 +1,5 @@
-import { IContent, IEncryptedContent, IListContentsOptions } from './types';
-import { IObject, AEScrypto, protobuf } from '../utils';
+import { IObject, IContent, IEncryptedContent, IListContentsOptions } from './types';
+import { AEScrypto, protobuf } from '../utils';
 import axios, { AxiosResponse } from 'axios';
 import * as Base64 from 'js-base64';
 import { assert, error } from '../utils/assert';

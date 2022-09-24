@@ -1,5 +1,6 @@
 export * from './cache/types';
 export * from './chain/types';
+export * from './utils/types';
 
 import * as cache from './cache';
 import * as chain from './chain';

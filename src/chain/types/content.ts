@@ -1,4 +1,4 @@
-import { IObject } from '../../utils/types/object';
+import { IObject } from './object';
 
 export interface IEncryptedContent {
   Data: string

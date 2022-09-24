@@ -1,5 +1,5 @@
-import { IObject } from './object';
-import { IPerson } from './person';
+import { IObject } from '../../chain/types/object';
+import { IPerson } from '../../chain/types/person';
 
 export interface ISignTrxPayload {
   type: '_Object' | 'Person'
