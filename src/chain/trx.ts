@@ -24,7 +24,7 @@ export const create = async (p: ICreateObjectPayload) => {
   const payload = await signTrx({
     type: '_Object',
     groupId: p.groupId,
-    data: p.data,
+    data: p.object,
     privateKey: p.privateKey,
     aesKey: group!.cipherKey
   });
@@ -43,7 +43,7 @@ export const createPerson = async (p: ICreatePersonPayload) => {
   const payload = await signTrx({
     type: 'Person',
     groupId: p.groupId,
-    data: p.data,
+    data: p.person,
     privateKey: p.privateKey,
     aesKey: group!.cipherKey
   });

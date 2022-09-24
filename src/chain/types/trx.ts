@@ -18,14 +18,14 @@ export interface ITrx {
 
 export interface ICreateObjectPayload {
   groupId: string;
-  data: IObject;
+  object: IObject;
   aesKey: string;
   privateKey?: string;
 }
 
 export interface ICreatePersonPayload {
   groupId: string;
-  data: IPerson;
+  person: IPerson;
   aesKey: string;
   privateKey?: string;
 }
