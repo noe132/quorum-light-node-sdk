@@ -47,6 +47,12 @@ export const list = async (options: IListContentsOptions) => {
       type: 'quorum.pb._Object',
       buffer
     });
+    if (object.image) {
+      object.image = object.image.map((item: any) => {
+        item.content = Base64.fromUint8Array(item.content);
+        return item;
+      })
+    }
     if (Object.keys(object).join('') === 'type') {
       object = protobuf.toObject({
         type: 'quorum.pb.Person',
