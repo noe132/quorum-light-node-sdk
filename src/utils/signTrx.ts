@@ -11,17 +11,17 @@ import { assert, error } from './assert';
 
 let nonce = 1;
 export const signTrx = async (payload: ISignTrxPayload) => {
-  const { groupId, object, aesKey, privateKey } = payload;
+  const { type, groupId, data, aesKey, privateKey } = payload;
   assert(groupId, error.required('groupId'));
-  assert(object, error.required('object'));
+  assert(data, error.required('data'));
   assert(aesKey, error.required('aesKey'));
   if (!privateKey) {
     const account = await getProviderAccount();
     assert(account, error.notFound('provider account'));
   }
   const objectProtoBuffer = protobuf.create({
-    type: 'quorum.pb._Object',
-    payload: object
+    type: `quorum.pb.${type}`,
+    payload: data
   })
   const encrypted = await AEScrypto.encrypt(objectProtoBuffer, aesKey);
   const now = new Date();

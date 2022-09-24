@@ -1,4 +1,5 @@
 import { IObject } from '../../utils/types/object';
+import { IPerson } from '../../utils/types/person';
 
 export interface ITrx {
   TrxId: string;
@@ -15,9 +16,16 @@ export interface ITrx {
   StorageType: string;
 }
 
-export interface ICreateTrxPayload {
+export interface ICreateObjectPayload {
   groupId: string;
-  object: IObject;
+  data: IObject;
+  aesKey: string;
+  privateKey?: string;
+}
+
+export interface ICreatePersonPayload {
+  groupId: string;
+  data: IPerson;
   aesKey: string;
   privateKey?: string;
 }

@@ -48,11 +48,13 @@ export const list = async (options: IListContentsOptions) => {
       buffer
     });
     if (Object.keys(object).join('') === 'type') {
-      console.log(` ------------- 可能是 profile ---------------`);
       object = protobuf.toObject({
         type: 'quorum.pb.Person',
         buffer
       });
+      if (object.image && object.image.content) {
+        object.image.content = Base64.fromUint8Array(object.image.content);
+      }
     }
     return {
       ...item,
