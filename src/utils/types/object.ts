@@ -4,6 +4,9 @@ export interface IObject {
   id?: string
   name?: string
   image?: IImage[]
+  inreplyto?: {
+    trxid: string
+  }
 }
 
 export interface IImage {
