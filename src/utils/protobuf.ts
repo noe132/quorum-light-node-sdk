@@ -209,6 +209,22 @@ const jsonDescriptor = {
                   "id": 2
                 }
               }
+            },
+            "Person": {
+              "fields": {
+                "id": {
+                  "type": "string",
+                  "id": 1
+                },
+                "name": {
+                  "type": "string",
+                  "id": 2
+                },
+                "image": {
+                  "type": "Image",
+                  "id": 3
+                }
+              }
             }
           }
         }

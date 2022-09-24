@@ -43,10 +43,17 @@ export const list = async (options: IListContentsOptions) => {
     const data = item.Data;
     const encryptedBuffer = Base64.toUint8Array(data);
     const buffer = await AEScrypto.decrypt(encryptedBuffer, group!.cipherKey);
-    const object = protobuf.toObject({
+    let object = protobuf.toObject({
       type: 'quorum.pb._Object',
       buffer
     });
+    if (Object.keys(object).join('') === 'type') {
+      console.log(` ------------- 可能是 profile ---------------`);
+      object = protobuf.toObject({
+        type: 'quorum.pb.Person',
+        buffer
+      });
+    }
     return {
       ...item,
       Data: object as IObject
