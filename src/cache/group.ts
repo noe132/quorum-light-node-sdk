@@ -1,5 +1,5 @@
 import { IGroup } from './types';
-import restoreSeedFromUrl from '../utils/restoreSeedFromUrl';
+import seedUrlToGroup from '../utils/seedUrlToGroup';
 import { assert, error } from '../utils/assert';
 
 const store = (key: string, data?: any) => {
@@ -18,22 +18,12 @@ export const list = () => {
 
 export const add = (seedUrl: string) => {
   const map = (store(STORE_KEY) || {}) as IMap;
-  const seed = restoreSeedFromUrl(seedUrl);
-  assert(seed.urls.length > 0, error.notFound('chain url'));
-  map[seed.group_id] = {
-    groupId: seed.group_id,
-    groupName: seed.group_name,
-    consensusType: seed.consensus_type,
-    encryptionType: seed.encryption_type,
-    cipherKey: seed.cipher_key,
-    appKey: seed.app_key,
-    ownerPubKey: seed.owner_pubkey,
-    signature: seed.signature,
-    chainAPIs: seed.urls
-  };
+  const group = seedUrlToGroup(seedUrl);
+  assert(group.chainAPIs.length > 0, error.notFound('chain url'));
+  map[group.groupId] = group;
   store(STORE_KEY, map);
   return {
-    groupId: seed.group_id
+    groupId: group.groupId
   };
 }
 
