@@ -15,7 +15,7 @@ export const create = ({
   }
   const message = object.create(payload);
   const buffer = object.encode(message).finish();
-  if (type.includes('_Object')) {
+  if (type.includes('_Object') || type.includes('Person')) {
     const pbAnyMessage = pbAny.create({
       typeUrl: `type.googleapis.com/${type.replaceAll('._', '.')}`,
       value: buffer

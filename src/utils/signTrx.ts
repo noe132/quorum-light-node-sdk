@@ -19,11 +19,11 @@ export const signTrx = async (payload: ISignTrxPayload) => {
     const account = await getProviderAccount();
     assert(account, error.notFound('provider account'));
   }
-  const objectProtoBuffer = protobuf.create({
+  const protoBuffer = protobuf.create({
     type: `quorum.pb.${type}`,
     payload: data
   })
-  const encrypted = await AEScrypto.encrypt(objectProtoBuffer, aesKey);
+  const encrypted = await AEScrypto.encrypt(protoBuffer, aesKey);
   const now = new Date();
   const senderPubkey = await getSenderPubkey(privateKey);
   const trx = {
