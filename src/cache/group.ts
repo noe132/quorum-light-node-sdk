@@ -20,6 +20,11 @@ export const add = (seedUrl: string) => {
   const map = (store(STORE_KEY) || {}) as IMap;
   const group = seedUrlToGroup(seedUrl);
   assert(group.chainAPIs.length > 0, error.notFound('chain url'));
+  if (map[group.groupId]) {
+    return {
+      groupId: group.groupId
+    };  
+  }
   map[group.groupId] = group;
   store(STORE_KEY, map);
   return {
