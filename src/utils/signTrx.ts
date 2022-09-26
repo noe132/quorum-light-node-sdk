@@ -15,7 +15,7 @@ export const signTrx = async (payload: ISignTrxPayload) => {
   assert(groupId, error.required('groupId'));
   assert(data, error.required('data'));
   assert(aesKey, error.required('aesKey'));
-  if (!privateKey) {
+  if (!privateKey && !payload.sign) {
     const account = await getProviderAccount();
     assert(account, error.notFound('provider account'));
   }
@@ -25,7 +25,7 @@ export const signTrx = async (payload: ISignTrxPayload) => {
   })
   const encrypted = await AEScrypto.encrypt(protoBuffer, aesKey);
   const now = new Date();
-  const senderPubkey = await getSenderPubkey(privateKey);
+  const senderPubkey = payload.publicKey ?? await getSenderPubkey(privateKey);
   const trx = {
     TrxId: uuidV4(),
     GroupId: groupId,
@@ -42,7 +42,7 @@ export const signTrx = async (payload: ISignTrxPayload) => {
   });
   const trxWithoutSignProtoBase64 = Base64.fromUint8Array(new Uint8Array(trxWithoutSignProtoBuffer));
   const hash = sha256(encBase64.parse(trxWithoutSignProtoBase64)).toString();
-  const signature = await sign(hash, privateKey);
+  const signature = await sign(hash, { privateKey, sign: payload.sign });
   const signatureBuffer = typeTransform.hexToUint8Array(signature);
   trx.SenderSign = signatureBuffer;
   const trxProtoBuffer = protobuf.create({
@@ -71,9 +71,11 @@ export const getSenderPubkey = async (privateKey?: string) => {
   }
 }
 
-export const sign = async (hash: string, privateKey?: string) => {
-  if (privateKey) {
-    const signingKey = new etherUtils.SigningKey(privateKey);
+export const sign = async (hash: string, params: { privateKey?: string, sign?: (hash: string) => string | Promise<string> }) => {
+  if (params.sign) {
+    return params.sign(hash);
+  } else if (params.privateKey) {
+    const signingKey = new etherUtils.SigningKey(params.privateKey);
     const digest = typeTransform.hexToUint8Array(hash);
     const signatureObj = signingKey.signDigest(digest);
     return etherUtils.joinSignature(signatureObj).replace('0x', '');

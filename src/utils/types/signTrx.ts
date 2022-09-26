@@ -7,4 +7,6 @@ export interface ISignTrxPayload {
   data: IObject | IPerson;
   aesKey: string;
   privateKey?: string;
+  publicKey?: string
+  sign?: (hash: string) => string | Promise<string>
 }

@@ -21,6 +21,8 @@ export interface ICreateObjectPayload {
   object: IObject;
   aesKey: string;
   privateKey?: string;
+  publicKey?: string
+  sign?: (hash: string) => string | Promise<string>
 }
 
 export interface ICreatePersonPayload {

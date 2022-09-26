@@ -27,6 +27,8 @@ export const create = async (p: ICreateObjectPayload) => {
     data: p.object,
     privateKey: p.privateKey,
     aesKey: group!.cipherKey
+    publicKey: p.publicKey,
+    sign: p.sign,
   });
   const apiURL = new URL(group!.chainAPIs[0]);
   const res = await (axios.post(`${apiURL.origin}/api/v1/node/trx/${p.groupId}`, payload, {
